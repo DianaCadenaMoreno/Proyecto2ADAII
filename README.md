@@ -10,7 +10,7 @@ https://github.com/DianaCadenaMoreno/Proyecto2ADAII.git
 
 #### Requerimientos
 
-La aplicación requiere que tenga instalado ```python 3.10.11``` 
+La aplicación requiere que tenga instalado ```python 3.10.11``` y ```minizinc 2.7.6``` 
 
 #### Ejecución
 
