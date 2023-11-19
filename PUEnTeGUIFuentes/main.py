@@ -116,11 +116,11 @@ class Interface:
                 print(f"Error al guardar el archivo DZN: {e}")
                 return
 
-            # Encerrar la ruta del archivo DZN entre comillas para manejar espacios en la ruta
+            #Encerrar la ruta del archivo DZN entre comillas para manejar espacios en la ruta
             tmp_dzn_path = f'"{tmp_dzn_path}"'
 
             # Ejecutar modelo PUEnTe.mzn con el archivo DZN usando HiGHS como solver
-            minizinc_command = f'minizinc --solver Highs PUEnTe.mzn {tmp_dzn_path}'
+            minizinc_command = f'minizinc --solver coinbc --all-solutions PUEnTe.mzn {tmp_dzn_path}'
             print(f"Ejecutando: {minizinc_command}")
             result = subprocess.run(minizinc_command, shell=True, capture_output=True, text=True)
 
