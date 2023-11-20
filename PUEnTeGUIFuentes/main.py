@@ -15,6 +15,8 @@ class Interface:
         # Marco principal
         self.main_frame = ttk.Frame(root, padding=(10, 10, 10, 10))
         self.main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+        self.root.columnconfigure(0, weight=1)  # La columna 0 (main_frame) se expandirá horizontalmente
+        self.root.rowconfigure(0, weight=1)     # La fila 0 (main_frame) se expandirá verticalmente
 
         # Etiqueta para selección de archivo
         self.label_file = ttk.Label(self.main_frame, text="Selecciona un archivo de texto:")
@@ -34,7 +36,7 @@ class Interface:
 
         # Cuadro de texto para entrada
         self.textbox = tk.Text(self.main_frame, height=10, width=60)
-        self.textbox.grid(row=3, column=0, columnspan=2, pady=10)
+        self.textbox.grid(row=3, column=0, columnspan=2, pady=10, sticky='nsew')  # Configuración adicional
 
         # Barra de desplazamiento vertical para el cuadro de texto
         scrollbar = ttk.Scrollbar(self.main_frame, command=self.textbox.yview)
@@ -46,19 +48,13 @@ class Interface:
         self.label_result.grid(row=4, column=0, columnspan=2, pady=10)
 
         # Cuadro de texto para resultados
-        self.result_textbox = tk.Text(self.main_frame, height=5, width=60)
-        self.result_textbox.grid(row=5, column=0, columnspan=2, pady=10)
+        self.result_textbox = tk.Text(self.main_frame, height=10, width=60)
+        self.result_textbox.grid(row=5, column=0, columnspan=2, pady=10, sticky='nsew')  # Configuración adicional
 
         # Barra de desplazamiento vertical para el cuadro de texto de resultados
         scrollbar_result = ttk.Scrollbar(self.main_frame, command=self.result_textbox.yview)
         scrollbar_result.grid(row=5, column=2, sticky=(tk.N, tk.S))
         self.result_textbox.config(yscrollcommand=scrollbar_result.set)
-
-        # Configurar pesos de columnas y filas para el marco principal
-        for i in range(6):
-            self.main_frame.rowconfigure(i, weight=1)
-        for i in range(2):
-            self.main_frame.columnconfigure(i, weight=1)
 
         # Configurar colores y fuentes
         for label in [self.label_file, self.label_input, self.label_result]:

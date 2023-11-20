@@ -21,18 +21,20 @@ array[1..J, 1..K] of var 0..1: UnitStartup;
 array[1..J, 1..K] of var 0..1: UnitShutdown;
 
 % Constraints
+
+%No negativity, lower and upper constraint
 constraint forall(j in 1..J, k in 1..K) (
     (pjk[j, k] >= 0) /\
-    ((pjk[j, k] >= 0 /\ pjk[j, k] <= 0) \/ (pjk[j, k] >= Pj[j])) /\
+    ((pjk[j, k] <= 0) \/ (pjk[j, k] >= Pj[j])) /\
     (pjk[j, k] <= Pj_max[j])
 );
-
+%Demand and reserve constraint
 constraint forall(k in 1..K) (
     (sum(j in 1..J) (pjk[j, k]) = Dk[k]) /\
     (sum(j in 1..J) (Pj_max[j] * UnitOperatingState[j, k]) >= (Dk[k] + Rk[k]))
 );
 
-% Constraints 3 and 4 combined: Limits on power variation
+% Limits on power variation constraint
 constraint forall(j in 1..J, k in 2..K) (
     (if pjk[j, k] > 0 /\ pjk[j, k - 1] > 0 then
         (pjk[j, k] - pjk[j, k - 1]) <= Supj[j] /\
@@ -40,7 +42,7 @@ constraint forall(j in 1..J, k in 2..K) (
     else true endif)
 );
 
-%  Unit startup and shutdown
+%  Unit startup and shutdown constraint
 constraint forall(j in 1..J, k in 1..K) (
     %  Unit operating state
     UnitOperatingState[j, k] = (pjk[j, k] > 0) /\
@@ -58,6 +60,7 @@ constraint costo_total = sum(k in 1..K) (
 
 % Minimization Objective
 solve minimize costo_total;
+
 
 % Output
 output ["\(costo_total);"];
