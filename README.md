@@ -40,6 +40,8 @@ En la interfaz podra subir un archivo en formato txt y dar click en resolver par
 
 #### Video explicativo
 
+https://drive.google.com/file/d/1hHftwihwHReVR5Yx1Ww61nZJMZV0R8Fj/view?usp=sharing
+
 ## Authors
 
 - Marlon Anacona
