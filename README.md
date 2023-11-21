@@ -1,7 +1,7 @@
 # Proyecto2ADAII
 Construir modelos de optimización en términos de parámetros, variables, restricciones y función objetivo, a partir de un problema determinado, para explorar soluciones prácticas utilizando herramientas computacionales de modelamiento y solvers existentes.
 
-En la raíz del proyecto se encuentra el ```informe.pdf``` acerca del desarrollo, también se encuentran unas carpetas y el modelo, ```DatosPUEnTe```,```MisInstancias```, ```PUEnTeGUIFUENTES```y un archivo```PUEnTe.mzn```  estas carpetas corresponden, a los datos usados de la bateria de pruebas, las instancias creadas, los archivos pertenecientes a la interfaz del programa y el modelo del problema.
+En la raíz del proyecto se encuentra el ```informe.pdf``` acerca del desarrollo, también se encuentra la carpeta ```DatosPUEnTe``` con los datos usados de la bateria de pruebas,```MisInstancias``` con las instancias creadas, ```PUEnTeGUIFUENTES```con los archivos pertenecientes a la interfaz del programa y ```PUEnTe.mzn```el modelo del problema.
 
 
 ## REPOSITORIO
